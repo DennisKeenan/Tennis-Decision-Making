@@ -6,6 +6,7 @@ from sklearn.model_selection import train_test_split
 from sklearn import tree
 from sklearn.metrics import confusion_matrix,accuracy_score
 import graphviz
+import joblib
 
 
 # Read Data CSV
@@ -47,3 +48,10 @@ graph.render("tennisdt")
 # Model
 y_predict=dt.predict(x_test)
 print(y_predict==y_test)
+
+# Confussion Matrix
+cfmat=confusion_matrix(y_predict,y_test)
+print(cfmat)
+print(accuracy_score(y_predict,y_test))
+
+joblib.dump(dt,"PlayTennis.pkl")
